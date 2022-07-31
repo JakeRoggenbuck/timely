@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"github.com/fatih/color"
-	"os"
 	"io/ioutil"
+	"os"
 )
 
 const STATE_FILE = "/.local/share/khron-krato/state"
@@ -46,25 +46,25 @@ func (s State) Print() {
 
 func (s State) Set() {
 	home, err := os.UserHomeDir()
-    if err != nil {
-        fmt.Println(err)
-    }
+	if err != nil {
+		fmt.Println(err)
+	}
 
-    if err := os.WriteFile(home + STATE_FILE, []byte(s.String()), 0666); err != nil {
-        fmt.Println(err)
-    }
+	if err := os.WriteFile(home+STATE_FILE, []byte(s.String()), 0666); err != nil {
+		fmt.Println(err)
+	}
 }
 
 func Get() State {
 	home, err := os.UserHomeDir()
-    if err != nil {
-        fmt.Println(err)
-    }
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	content, err := ioutil.ReadFile(home + STATE_FILE)
-    if err != nil {
-        fmt.Println(err)
-    }
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	if string(content) == "working" {
 		return Working
@@ -87,10 +87,10 @@ func main() {
 		state.Set()
 	} else if args.toggle {
 		if state == Working {
-			state = Off 
+			state = Off
 			state.Set()
 		} else {
-			state =Working
+			state = Working
 			state.Set()
 		}
 	} else if args.check {

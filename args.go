@@ -5,10 +5,10 @@ import (
 )
 
 type Args struct {
-	work bool
-	off bool
+	work   bool
+	off    bool
 	toggle bool
-	check bool
+	check  bool
 }
 
 func parse_args() Args {
