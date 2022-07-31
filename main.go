@@ -5,6 +5,8 @@ import (
 	"github.com/fatih/color"
 	"io/ioutil"
 	"os"
+	"time"
+	"log"
 )
 
 const STATE_FILE = "/.local/share/timely/state"
@@ -75,6 +77,11 @@ func (s State) Print(no_color bool, no_word bool) {
 	}
 }
 
+func (s State) Time() string {
+	t := time.Now()
+	return "Started " + s.String() + " at " + t.Format("01-02-2006 15:04:05 Monday") + "\n"
+}
+
 func (s State) Set() {
 	home, err := os.UserHomeDir()
 	if err != nil {
@@ -82,7 +89,19 @@ func (s State) Set() {
 	}
 
 	if err := os.WriteFile(home+STATE_FILE, []byte(s.String()), 0666); err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
+	}
+
+
+	f, err := os.OpenFile(home+TIMES_FILE, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+	if err != nil {
+    	log.Fatal(err)
+	}
+
+	defer f.Close()
+
+	if _, err = f.WriteString(s.Time()); err != nil {
+		log.Fatal(err)
 	}
 }
 
@@ -111,11 +130,15 @@ func main() {
 	state = Get()
 
 	if args.work {
-		state = Working
-		state.Set()
+		if state != Working {
+			state = Working
+			state.Set()
+		}
 	} else if args.off {
-		state = Off
-		state.Set()
+		if state != Off {
+			state = Off
+			state.Set()
+		}
 	} else if args.toggle {
 		if state == Working {
 			state = Off
