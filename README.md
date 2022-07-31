@@ -39,3 +39,7 @@ mkdir -p ~/.local/share/timely/
 printf off ~/.local/share/timely/state
 printf off ~/.local/share/timely/times
 ```
+
+## Outputs
+![image](https://user-images.githubusercontent.com/35516367/182044781-2f413181-f2de-466a-808e-53067b93a48b.png)
+
