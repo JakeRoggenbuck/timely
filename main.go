@@ -33,7 +33,7 @@ func (s State) Char() string {
 	return states[s-1]
 }
 
-func (s State) Print() {
+func (s State) Println() {
 	var c *color.Color
 	if s == Working {
 		c = color.New(color.FgRed)
@@ -42,6 +42,17 @@ func (s State) Print() {
 	}
 
 	c.Println(s.Char() + " " + s.String())
+}
+
+func (s State) Print() {
+	var c *color.Color
+	if s == Working {
+		c = color.New(color.FgRed)
+	} else {
+		c = color.New(color.FgBlue)
+	}
+
+	c.Print(s.Char() + " " + s.String())
 }
 
 func (s State) Set() {
@@ -94,10 +105,13 @@ func main() {
 			state.Set()
 		}
 	} else if args.check {
-		state.Print()
+		if args.inline {
+			state.Print()
+		} else {
+			state.Println()
+		}
 	} else {
 		fmt.Println("Welcome to khron-krato")
 		fmt.Println("Use --help for more info")
 	}
-
 }

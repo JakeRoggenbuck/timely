@@ -9,6 +9,7 @@ type Args struct {
 	off    bool
 	toggle bool
 	check  bool
+	inline bool
 }
 
 func parse_args() Args {
@@ -16,8 +17,9 @@ func parse_args() Args {
 	off := flag.Bool("off", false, "Set to off")
 	toggle := flag.Bool("toggle", false, "Set to toggle")
 	check := flag.Bool("check", false, "Set to check")
+	inline := flag.Bool("inline", false, "No newline after print")
 
 	flag.Parse()
 
-	return Args{*work, *off, *toggle, *check}
+	return Args{*work, *off, *toggle, *check, *inline}
 }
