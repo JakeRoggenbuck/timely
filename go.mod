@@ -1,4 +1,4 @@
-module github.com/jakeroggenbuck/khron-krato
+module github.com/jakeroggenbuck/chron-krato
 
 go 1.18
 
