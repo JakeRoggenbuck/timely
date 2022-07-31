@@ -29,3 +29,11 @@ In your bashrc or similar
 ```sh
 PS1="$(timely -check -inline) "
 ```
+
+## Setup
+Create `~/.local/share/timely/` and `~/.local/share/timely/state`
+
+```
+mkdir -p ~/.local/share/timely/
+printf off ~/.local/share/timely/state
+```
