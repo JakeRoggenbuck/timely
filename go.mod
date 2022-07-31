@@ -2,7 +2,10 @@ module github.com/jakeroggenbuck/khron-krato
 
 go 1.18
 
-require github.com/fatih/color v1.13.0
+require (
+	github.com/fatih/color v1.13.0
+	github.com/mitchellh/go-homedir v1.1.0
+)
 
 require (
 	github.com/mattn/go-colorable v0.1.9 // indirect
