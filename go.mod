@@ -1,4 +1,4 @@
-module github.com/jakeroggenbuck/chron-krato
+module github.com/jakeroggenbuck/timely
 
 go 1.18
 
