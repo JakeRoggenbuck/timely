@@ -33,7 +33,7 @@ func (s State) Char() string {
 	return states[s-1]
 }
 
-func (s State) Println() {
+func (s State) Println(no_color bool, no_word bool) {
 	var c *color.Color
 	if s == Working {
 		c = color.New(color.FgRed)
@@ -41,10 +41,20 @@ func (s State) Println() {
 		c = color.New(color.FgBlue)
 	}
 
-	c.Println(s.Char() + " " + s.String())
+	if no_color {
+		c.DisableColor()
+	} else {
+		c.EnableColor()
+	}
+
+	if no_word {
+		c.Println(s.Char())
+	} else {
+		c.Println(s.Char() + " " + s.String())
+	}
 }
 
-func (s State) Print() {
+func (s State) Print(no_color bool, no_word bool) {
 	var c *color.Color
 	if s == Working {
 		c = color.New(color.FgRed)
@@ -52,7 +62,17 @@ func (s State) Print() {
 		c = color.New(color.FgBlue)
 	}
 
-	c.Print(s.Char() + " " + s.String())
+	if no_color {
+		c.DisableColor()
+	} else {
+		c.EnableColor()
+	}
+
+	if no_word  {
+		c.Print(s.Char())
+	} else {
+		c.Print(s.Char() + " " + s.String())
+	}
 }
 
 func (s State) Set() {
@@ -106,9 +126,9 @@ func main() {
 		}
 	} else if args.check {
 		if args.inline {
-			state.Print()
+			state.Print(args.no_color, args.no_word)
 		} else {
-			state.Println()
+			state.Println(args.no_color, args.no_word)
 		}
 	} else {
 		fmt.Println("Welcome to khron-krato")
