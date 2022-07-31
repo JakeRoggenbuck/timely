@@ -7,8 +7,8 @@ import (
 	"os"
 )
 
-const STATE_FILE = "/.local/share/chron-krato/state"
-const TIMES_FILE = "/.local/share/chron-krato/times"
+const STATE_FILE = "/.local/share/timely/state"
+const TIMES_FILE = "/.local/share/timely/times"
 
 type State int
 
@@ -131,7 +131,7 @@ func main() {
 			state.Println(args.no_color, args.no_word)
 		}
 	} else {
-		fmt.Println("Welcome to chron-krato")
+		fmt.Println("Welcome to timely")
 		fmt.Println("Use --help for more info")
 	}
 }
