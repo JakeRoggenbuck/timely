@@ -37,4 +37,5 @@ Create `~/.local/share/timely/` and `~/.local/share/timely/state`
 ```sh
 mkdir -p ~/.local/share/timely/
 printf off ~/.local/share/timely/state
+printf off ~/.local/share/timely/times
 ```
