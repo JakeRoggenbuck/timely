@@ -1,4 +1,4 @@
-# Timely
+# Timely ![Go](https://img.shields.io/github/workflow/status/jakeroggenbuck/timely/Go?style=for-the-badge)
 
 ![image](https://user-images.githubusercontent.com/35516367/182043013-b1b2bf2d-9870-4a46-92d1-ae6e0eef6105.png)
 
