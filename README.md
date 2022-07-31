@@ -10,10 +10,22 @@ If you work remotely and need to log a certain amount of hours a week and may ha
 Usage of timely:
   -check
     	Set to check
+  -inline
+    	No newline after print
+  -no-color
+    	No color output
+  -no-word
+    	No word in output
   -off
     	Set to off
   -toggle
     	Set to toggle
   -work
     	Set to work
+```
+
+## Add to prompt
+In your bashrc or similar
+```sh
+PS1="$(timely -check -inline) "
 ```
